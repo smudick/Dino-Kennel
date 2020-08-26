@@ -6,7 +6,7 @@ const dinos = [
     age: 45,
     owner: "John Hammond",
     adventures: [],
-    health: 60,
+    health: 30,
     image: "./images/apatosaurus.jpg",
   },
   {
@@ -16,7 +16,7 @@ const dinos = [
     age: 33,
     owner: "Dr. Alan Grant",
     adventures: [],
-    health: 60,
+    health: 40,
     image: "./images/velociraptor.jpg",
   },
   {
@@ -36,7 +36,7 @@ const dinos = [
     age: 900,
     owner: "Denis Nedry",
     adventures: [],
-    health: 60,
+    health: 0,
     image: "./images/bernard.jpg",
   },
   {
