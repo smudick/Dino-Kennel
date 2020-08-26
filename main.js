@@ -1,6 +1,8 @@
 import { getDinos } from './data/dinoData.js';
+import { displayDinos } from '../components/displayDinos.js';
+
 
 const init = () => {
-    getDinos();
+    displayDinos(getDinos());
 }
 init();

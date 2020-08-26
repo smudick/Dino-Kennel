@@ -95,8 +95,7 @@ const dinos = [
 ];
 
 const getDinos = () => {
-  console.log(dinos);
-  return dinos;
-};
+    return dinos
+}
 
-export { getDinos };
+export { getDinos }
