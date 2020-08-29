@@ -114,7 +114,7 @@ const displayDinos = () => {
     healthChecker(item);
     if (item.location === "kennel") {
       $("#kennel-cards").append(
-        `<div class="card m-2" id="dino-${item.id}" style="width: 18rem;">
+        `<div class="card m-2" id="${index}" style="width: 18rem;">
             <img src="${item.image}" id="dino-image-${index}" class="card-img-top card-size" alt="${item.type}">
             <div class="card-body">
               <h5 class="card-title">${item.name}</h5>
@@ -128,7 +128,7 @@ const displayDinos = () => {
       );
     } else if (item.location === "hospital") {
       $("#hospital-cards").append(
-        `<div class="card m-2" id="dino-${item.id}" style="width: 18rem;">
+        `<div class="card m-2" id="${index}" style="width: 18rem;">
                   <img src="${item.image}" id="dino-image-${index}" class="card-img-top card-size" alt="${item.type}">
                   <div class="card-body">
                     <h5 class="card-title">${item.name}</h5>
@@ -143,7 +143,7 @@ const displayDinos = () => {
       );
     } else {
       $("#graveyard-cards").append(
-        `<div class="card m-2" id="dino-${item.id}" style="width: 18rem;">
+        `<div class="card m-2" id="${index}" style="width: 18rem;">
                   <img src="${item.image}" id="dino-image-${index}" class="card-img-top card-size" alt="${item.type}">
                   <div class="card-body">
                     <h5 class="card-title">${item.name}</h5>
@@ -171,12 +171,17 @@ const healthChecker = (item) => {
 };
 
 const buttonClicks = (index) => {
+  addDinoButtonClick();
   dinoModalPictureClick(index);
   deleteDinosButtonClick(index);
   petDinosButtonClick(index);
   feedDinosButtonClick(index);
 
   // adventureButtonClick(index);
+};
+
+const addDinoButtonClick = () => {
+  $("#add-dino-button").on("click", addDinoModal);
 };
 
 const dinoModalPictureClick = (index) => {
@@ -193,6 +198,49 @@ const feedDinosButtonClick = (index) => {
 
 const deleteDinosButtonClick = (index) => {
   $(`#delete-button-${index}`).on("click", deleteDinos);
+};
+
+const addDinoModal = () => {
+  $("#add-dino").html(`
+    <div class="modal" id="add-dino-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add a Dino</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Namel</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Age</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Age">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Type</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Type">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Owner</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Owner">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Image</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Image Url">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>`);
+  $("#add-dino-modal").modal("show");
 };
 
 const buildModal = (e) => {
@@ -236,8 +284,9 @@ const buildModal = (e) => {
 const deleteDinos = (e) => {
   const ctype = e.target.type;
   const target = e.target.parentNode.parentNode.id;
+  const target2 = e.currentTarget.parentNode.parentNode.id;
 
-  console.log(target);
+  console.log(target, target2);
 
   if (ctype === "button") {
     dinos.splice(target, 1);
