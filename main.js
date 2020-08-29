@@ -309,8 +309,9 @@ const buildModal = (e) => {
       </div>
     </div>`);
       adventureTable(item);
+      $("#dino-info-modal").modal("show");
     }
-    $("#dino-info-modal").modal("show");
+    
   });
 };
 
@@ -367,15 +368,12 @@ const dinoAdventure = (e) => {
   adventureLog.timestamp = timestamp;
   adventureLog.summary = summary;
   dinos[target].adventures.push(adventureLog);
-  //   console.log(dinos[target]);
   displayDinos();
 };
 
 const adventureTable = (dino) => {
   let adventuresArray = dino.adventures;
-  console.log(adventuresArray);
   adventuresArray.forEach((adventure) => {
-    console.log(adventure);
     $("#adventure-table").append(`
     <table>    
         <tr>
