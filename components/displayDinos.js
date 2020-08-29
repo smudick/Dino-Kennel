@@ -1,161 +1,71 @@
-// import { getDinos } from "../data/dinoData.js";
-const dinos = [
-    {
-      id: "dino1",
-      name: "Dino Doug",
-      type: "Apatosaurus",
-      age: 45,
-      owner: "John Hammond",
-      adventures: [],
-      health: 60,
-      image: "./images/apatosaurus.jpg",
-    },
-    {
-      id: "dino2",
-      name: "Clever Girl",
-      type: "Velociraptor",
-      age: 33,
-      owner: "Dr. Alan Grant",
-      adventures: [],
-      health: 60,
-      image: "./images/velociraptor.jpg",
-    },
-    {
-      id: "dino3",
-      name: "Rex",
-      type: "T-Rex",
-      age: 78,
-      owner: "Dr. Ellie Satler",
-      adventures: [],
-      health: 60,
-      image: "./images/trex.jpg",
-    },
-    {
-      id: "dino4",
-      name: "Bernard",
-      type: "Unknown",
-      age: 900,
-      owner: "Denis Nedry",
-      adventures: [],
-      health: 0,
-      image: "./images/bernard.jpg",
-    },
-    {
-      id: "dino5",
-      name: "Pepper",
-      type: "Dogasaurus",
-      age: 2,
-      owner: "Ian Malcolm",
-      adventures: [],
-      health: 60,
-      image: "./images/pepper.jpg",
-    },
-    {
-      id: "dino6",
-      name: "Tim",
-      type: "Talarurus",
-      age: 100,
-      owner: "Dr. T",
-      adventures: [],
-      health: 60,
-      image:
-        "https://vignette.wikia.nocookie.net/dinosaurs/images/2/2b/TalarurusInfobox.png/revision/latest/scale-to-width-down/340?cb=20150512165226",
-    },
-    {
-      id: "dino7",
-      name: "Tracy",
-      type: "Triceratops",
-      age: 100,
-      owner: "Abbey",
-      adventures: [],
-      health: 60,
-      image:
-        "https://images-na.ssl-images-amazon.com/images/I/81Wsvp2M7iL._AC_SX425_.jpg",
-    },
-    {
-      id: "dino8",
-      name: "Percy",
-      type: "Pterodactyl",
-      age: 10,
-      owner: "Jacob",
-      adventures: [],
-      health: 60,
-      image: "https://images.dinosaurpictures.org/3_pterodactyl_63be.jpg",
-    },
-    {
-      id: "dino9",
-      name: "Betty",
-      type: "brontosaurus",
-      age: 22,
-      owner: "Dr. T",
-      adventures: [],
-      health: 20,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTOdrC7hlvBawFQ7g8vgwHcfQphX5WfeN2bth0dvc4M2oxNGdSD",
-    },
-  ];
+import { getDinos } from "../data/dinoData.js";
+import { buttonClicks } from "./dinoButtons.js";
 
-const displayDinos = (dinosArray, location) => {
-  $(`#${location}`).html("");
-  dinosArray.forEach((item) => {
-    $(`#${location}`).append(
-      `<div class="card" style="width: 18rem;">
-            <img src="${item.image}" class="card-img-top" alt="${item.type}">
+const displayDinos = () => {
+  $("#kennel-cards").html("");
+  $("#hospital-cards").html("");
+  $("#graveyard-cards").html("");
+
+  getDinos().forEach((item, index) => {
+    healthChecker(item);
+    if (item.location === "kennel") {
+      $("#kennel-cards").append(
+        `<div class="card m-2" id="${index}" style="width: 18rem;">
+            <img src="${item.image}" id="dino-image-${index}" class="card-img-top card-size" alt="${item.type}">
             <div class="card-body">
               <h5 class="card-title">${item.name}</h5>
-              <p class="card-text">Health: ${item.health}</p>
-              <a id="pet-button-${item.id}"  class="btn btn-primary">Pet</a>
-              <a id="feed-button-${item.id}"  class="btn btn-secondary">Feed</a>
-              <a id="adventure-button-${item.id}"  class="btn btn-warning">Adventure</a>
-              <a id="delete-button" class="btn btn-danger">Delete</a>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: ${item.health}%" aria-valuenow="${item.health}" aria-valuemin="0" aria-valuemax="100">${item.health}%</div>
+                </div>
+              <button id="pet-button-${index}" type="button" class="btn btn-outline-primary m-1">Pet</button>
+              <button id="feed-button-${index}" type="button" class="btn btn-outline-success m-1">Feed</button>
+              <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning m-1">Adventure</button>
+              <button id="delete-button-${index}" type="button" class="btn btn-outline-danger m-1">Delete</button>
             </div>
           </div>`
-    );
-    deleteDinosButtonClick();
-  });
-};
+      );
+    } else if (item.location === "hospital") {
+      $("#hospital-cards").append(
+        `<div class="card m-2" id="${index}" style="width: 18rem;">
+                  <img src="${item.image}" id="dino-image-${index}" class="card-img-top card-size" alt="${item.type}">
+                  <div class="card-body">
+                    <h5 class="card-title">${item.name}</h5>
+                    <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: ${item.health}%" aria-valuenow="${item.health}" aria-valuemin="0" aria-valuemax="100">${item.health}%</div>
+                </div>
 
-const healthChecker = (dinosArray) => {
-  let healthyDinos = [];
-  let sickDinos = [];
-  let deadDinos = [];
-  dinosArray.forEach((item) => {
-    if (item.health >= 60) {
-      healthyDinos.push(item);
-      displayDinos(healthyDinos, "kennel");
-    } else if (item.health < 60 && item.health > 0) {
-      sickDinos.push(item);
-      displayDinos(sickDinos, "hospital");
+                    <button id="pet-button-${index}" type="button" class="btn btn-outline-primary m-1">Pet</button>
+                    <button id="feed-button-${index}" type="button" class="btn btn-outline-success m-1">Feed</button>
+                    <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning m-1">Adventure</button>
+                    <button id="delete-button-${index}" type="button" class="btn btn-outline-danger m-1">Delete</button>
+                  </div>
+                </div>`
+      );
     } else {
-      deadDinos.push(item);
-      displayDinos(deadDinos, "graveyard");
+      $("#graveyard-cards").append(
+        `<div class="card m-2" id="${index}" style="width: 18rem;">
+                  <img src="${item.image}" id="dino-image-${index}" class="card-img-top card-size" alt="${item.type}">
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">${item.name}</h5>
+                    <img class="dead-icon align-self-center" src="https://i.pinimg.com/originals/73/41/88/7341884ed3a6c8449ad968dbd7d038e5.jpg">
+                    <button id="delete-button-${index}" type="button" class="btn btn-outline-danger m-1">Delete</button>
+                  </div>
+                </div>`
+      );
     }
+    item.id = index;
+    buttonClicks(index);
   });
 };
 
-const deleteDinosButtonClick = () => {
-  $(`#delete-button`).on(("click", deleteDinos));
+const healthChecker = (item) => {
+  if (item.health >= 50) {
+    item.location = "kennel";
+  } else if (item.health < 50 && item.health > 0) {
+    item.location = "hospital";
+  } else {
+    item.location = "graveyard";
+  }
 };
 
-const deleteDinos = (e) => {
-    const ctype = e.target.type;
-    const target = e.target.id;
-  
-    if (ctype === "button") {
-        dinos.splice(target, 1);
-  
-        healthChecker(dinos);;
-    }
-  };
-// const deleteDinos = (dinosArray) => {
-//     console.log('clicked')
-//   dinosArray.forEach((item) => {
-//     dinosArray.splice(item, 1);
-//     healthChecker(dinosArray);
-//   });
-// };
-
-
-
-
-export { healthChecker };
+export { displayDinos }
