@@ -2,15 +2,16 @@ import { getDinos } from "../data/dinoData.js";
 import { displayDinos } from "./displayDinos.js";
 
 const addDinoButtonClick = () => {
-    $("#add-dino-button").on("click", addDinoModal);
-  };
-  
-  const submitDinoButtonClick = () => {
-    $("#submit-new-dino").on("click", addNewDino);
-  };
-  
-  const addDinoModal = () => {
-    $("#add-dino").append(`
+  $("#add-dino-button").on("click", addDinoModal);
+};
+
+const submitDinoButtonClick = () => {
+  $("#submit-new-dino").on("click", addNewDino);
+};
+
+const addDinoModal = () => {
+    
+  $("#add-dino").append(`
       <div class="modal" id="add-dino-modal" tabindex="-1">
           <div class="modal-dialog">
               <div class="modal-content">
@@ -49,32 +50,32 @@ const addDinoButtonClick = () => {
       </div>
     </div>
   </div>`);
-    submitDinoButtonClick();
-    $("#add-dino-modal").modal("show");
-  };
-  
-  const addNewDino = () => {
-    let newDino = {};
-    newDino.health = 60;
-    newDino.adventures = [];
-    newDino.name = $("#new-dino-name").val();
-    newDino.type = $("#new-dino-type").val();
-    newDino.age = $("#new-dino-age").val();
-    newDino.owner = $("#new-dino-owner").val();
-    newDino.image = $("#new-dino-image").val();
-  
-    getDinos().push(newDino);
-    displayDinos(getDinos());
-    clearDinoForm();
-  };
-  
-  const clearDinoForm = () => {
-    $("#new-dino-name").val("");
-    $("#new-dino-type").val("");
-    $("#new-dino-age").val("");
-    $("#new-dino-owner").val("");
-    $("#new-dino-image").val("");
-  };
+  $("#add-dino-modal").modal("show");
+  submitDinoButtonClick();
+};
 
-  export { addDinoButtonClick };
-  
+const addNewDino = () => {
+  let newDino = {};
+  newDino.health = 60;
+  newDino.adventures = [];
+  newDino.name = $("#new-dino-name").val();
+  newDino.type = $("#new-dino-type").val();
+  newDino.age = $("#new-dino-age").val();
+  newDino.owner = $("#new-dino-owner").val();
+  newDino.image = $("#new-dino-image").val();
+
+  getDinos().push(newDino);
+  displayDinos(getDinos());
+  clearDinoForm();
+};
+
+const clearDinoForm = () => {
+  $("#new-dino-name").val("");
+  $("#new-dino-type").val("");
+  $("#new-dino-age").val("");
+  $("#new-dino-owner").val("");
+  $("#new-dino-image").val("");
+  $("#add-dino-modal").modal("hide");
+};
+
+export { addDinoButtonClick };

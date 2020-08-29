@@ -59,6 +59,9 @@ const displayDinos = () => {
 };
 
 const healthChecker = (item) => {
+  if (item.health > 100) {
+    item.health = 100;
+  };
   if (item.health >= 50) {
     item.location = "kennel";
     item.healthbarColor = "bg-success"
