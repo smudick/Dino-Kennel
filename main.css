@@ -1,0 +1,43 @@
+h1 {
+  color: white;
+}
+
+h2,
+h5 {
+  text-align: center;
+}
+
+.hospital {
+  background-image: url("./images/hospital-bg.jpg");
+}
+
+.kennel {
+  background-image: url("./images/kennel-bg.jpg");
+}
+.graveyard {
+  background-image: url("./images/graveyard-bg.jpg");
+}
+.card-size {
+  height: 225px;
+}
+.modal-body {
+  display: flex;
+}
+.modal-image img {
+  height: 250px;
+  width: 250px;
+  margin-right: 20px;
+}
+.dead-icon {
+  height: 30px;
+  width: 30px;
+}
+.table {
+  display: flex;
+  justify-content: space-between;
+  justify-self: center;
+}
+.timestamp-summary {
+  display: flex;
+  align-self: center;
+}

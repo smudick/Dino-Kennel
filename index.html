@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dino Kennel</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+        <nav class="navbar navbar-dark bg-dark page-title">
+            <h1>Dino Kennel</h1>
+            <button type="button" id="add-dino-button" class="btn btn-secondary btn-lg btn-block">Add Dino</button>
+        </nav>
+        
+
+    <div id="dino-locations">
+        <div id="dino-info"></div>
+        <div id="add-dino"></div>
+        <div id="kennel" class="kennel d-flex flex-column">
+            <h2>Kennel</h2>
+            <div id="kennel-cards" class="d-flex flex-wrap"></div>
+        </div>
+        <div id="hospital" class="hospital d-flex flex-column">
+            <h2>Hospital</h2>
+            <div id="hospital-cards" class="d-flex flex-wrap"></div>
+        </div>
+        <div id="graveyard" class="graveyard d-flex flex-column">
+            <h2>Graveyard</h2>
+            <div id="graveyard-cards" class="d-flex flex-wrap"></div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script type='module' src="main.js"></script>
+  </body>
+</html>
