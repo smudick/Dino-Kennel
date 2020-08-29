@@ -1,10 +1,29 @@
+h1 {
+  color: white;
+}
+
+h2 {
+  text-align: center;
+}
+
 .hospital {
-    background-color: red;
+  background-color: red;
 }
 
 .kennel {
-    background-color: green;
+  background-color: green;
 }
 .graveyard {
-    background-color: gray;
+  background-color: gray;
+}
+.card-size {
+  height: 225px;
+}
+.modal-body {
+  display: flex;
+}
+.modal-image img {
+  height: 250px;
+  width: 250px;
+  margin-right: 20px;
 }

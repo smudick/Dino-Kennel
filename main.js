@@ -29,7 +29,7 @@ const dinos = [
     name: "Rex",
     type: "T-Rex",
     age: 78,
-    owner: "Dr. Ellie Satler",
+    owner: "Ian Malcolm",
     adventures: [],
     health: 60,
     image: "./images/trex.jpg",
@@ -51,7 +51,7 @@ const dinos = [
     name: "Pepper",
     type: "Dogasaurus",
     age: 2,
-    owner: "Ian Malcolm",
+    owner: "Sam",
     adventures: [],
     health: 60,
     image: "./images/pepper.jpg",
@@ -106,52 +106,52 @@ const dinos = [
   },
 ];
 const displayDinos = () => {
-  $("#kennel").html("");
-  $("#hospital").html("");
-  $("#graveyard").html("");
+  $("#kennel-cards").html("");
+  $("#hospital-cards").html("");
+  $("#graveyard-cards").html("");
 
   dinos.forEach((item, index) => {
     healthChecker(item);
     if (item.location === "kennel") {
-      $("#kennel").append(
-        `<div class="card" id="dino-${item.id}" style="width: 18rem;">
-            <img src="${item.image}" class="card-img-top" alt="${item.type}">
+      $("#kennel-cards").append(
+        `<div class="card m-2" id="dino-${item.id}" style="width: 18rem;">
+            <img src="${item.image}" id="dino-image-${index}" class="card-img-top card-size" alt="${item.type}">
             <div class="card-body">
               <h5 class="card-title">${item.name}</h5>
               <p class="card-text">Health: ${item.health}</p>
-              <button id="pet-button-${index}" type="button" class="btn btn-outline-primary">Pet</button>
-              <button id="feed-button-${index}" type="button" class="btn btn-outline-secondary">Feed</button>
-              <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning">Adventure</button>
-              <button id="delete-button-${index}" type="button" class="btn btn-outline-danger">Delete</button>
+              <button id="pet-button-${index}" type="button" class="btn btn-outline-primary m-1">Pet</button>
+              <button id="feed-button-${index}" type="button" class="btn btn-outline-success m-1">Feed</button>
+              <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning m-1">Adventure</button>
+              <button id="delete-button-${index}" type="button" class="btn btn-outline-danger m-1">Delete</button>
             </div>
           </div>`
       );
     } else if (item.location === "hospital") {
-      $("#hospital").append(
-        `<div class="card" id="dino-${index}" style="width: 18rem;">
-                  <img src="${item.image}" class="card-img-top" alt="${item.type}">
+      $("#hospital-cards").append(
+        `<div class="card m-2" id="dino-${item.id}" style="width: 18rem;">
+                  <img src="${item.image}" id="dino-image-${index}" class="card-img-top card-size" alt="${item.type}">
                   <div class="card-body">
                     <h5 class="card-title">${item.name}</h5>
                     <p class="card-text">Health: ${item.health}</p>
-                    <a id="pet-button-${index}"  class="btn btn-primary">Pet</a>
-                    <button id="pet-button-${index}" type="button" class="btn btn-outline-primary">Pet</button>
-                    <button id="feed-button-${index}" type="button" class="btn btn-outline-secondary">Feed</button>
-                    <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning">Adventure</button>
-                    <button id="delete-button-${index}" type="button" class="btn btn-outline-danger">Delete</button>
+
+                        <button id="pet-button-${index}" type="button" class="btn btn-outline-primary m-1">Pet</button>
+                        <button id="feed-button-${index}" type="button" class="btn btn-outline-success m-1">Feed</button>
+                        <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning m-1">Adventure</button>
+                        <button id="delete-button-${index}" type="button" class="btn btn-outline-danger m-1">Delete</button>
                   </div>
                 </div>`
       );
     } else {
-      $("#graveyard").append(
-        `<div class="card" id="dino-${index}" style="width: 18rem;">
-                  <img src="${item.image}" class="card-img-top" alt="${item.type}">
+      $("#graveyard-cards").append(
+        `<div class="card m-2" id="dino-${item.id}" style="width: 18rem;">
+                  <img src="${item.image}" id="dino-image-${index}" class="card-img-top card-size" alt="${item.type}">
                   <div class="card-body">
                     <h5 class="card-title">${item.name}</h5>
                     <p class="card-text">Health: ${item.health}</p>
-                    <button id="pet-button-${index}" type="button" class="btn btn-outline-primary">Pet</button>
-                    <button id="feed-button-${index}" type="button" class="btn btn-outline-secondary">Feed</button>
-                    <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning">Adventure</button>
-                    <button id="delete-button-${index}" type="button" class="btn btn-outline-danger">Delete</button>
+                    <button id="pet-button-${index}" type="button" class="btn btn-outline-primary m-1">Pet</button>
+                    <button id="feed-button-${index}" type="button" class="btn btn-outline-success m-1">Feed</button>
+                    <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning m-1">Adventure</button>
+                    <button id="delete-button-${index}" type="button" class="btn btn-outline-danger m-1">Delete</button>
                   </div>
                 </div>`
       );
@@ -171,10 +171,16 @@ const healthChecker = (item) => {
 };
 
 const buttonClicks = (index) => {
+  dinoModalPictureClick(index);
   deleteDinosButtonClick(index);
   petDinosButtonClick(index);
   feedDinosButtonClick(index);
+
   // adventureButtonClick(index);
+};
+
+const dinoModalPictureClick = (index) => {
+  $(`#dino-image-${index}`).on("click", buildModal);
 };
 
 const petDinosButtonClick = (index) => {
@@ -189,6 +195,44 @@ const deleteDinosButtonClick = (index) => {
   $(`#delete-button-${index}`).on("click", deleteDinos);
 };
 
+const buildModal = (e) => {
+  let pictureId = e.target.parentNode.id;
+  console.log(pictureId);
+  dinos.forEach((item) => {
+    console.log(`dino-${item.id}`);
+    if (pictureId === `dino-${item.id}`) {
+      $("#dino-info").html(`
+      <div class="modal" id="dino-info-modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Dino Profile</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <div class="modal-image">
+            <img src="${item.image}">
+          </div>
+            <div class="modal-info">
+                <h3>${item.name}</h3>
+                <p>Type: ${item.type}</p>
+                <p>Age: ${item.age}</p>
+                <p>Owner: ${item.owner}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="container-lg">100% wide until large breakpoint</div>
+          </div>
+        </div>
+      </div>
+    </div>`);
+    }
+    $("#dino-info-modal").modal("show");
+  });
+};
+
 const deleteDinos = (e) => {
   const ctype = e.target.type;
   const target = e.target.parentNode.parentNode.id;
@@ -197,7 +241,6 @@ const deleteDinos = (e) => {
 
   if (ctype === "button") {
     dinos.splice(target, 1);
-    // console.log(dinos);
   }
   displayDinos();
 };

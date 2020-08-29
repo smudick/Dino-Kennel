@@ -14,11 +14,27 @@
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
+        <nav class="navbar navbar-dark bg-dark page-title">
+            <h1>Dino Kennel</h1>
+            <button type="button" id="add-dino-button" class="btn btn-secondary btn-lg btn-block">Add Dino</button>
+        </nav>
+
     <div id="dino-locations">
-        <div id="kennel" class="kennel"></div>
-        <div id="hospital" class="hospital"></div>
-        <div id="graveyard" class="graveyard"></div>
+        <div id="dino-info"></div>
+        <div id="kennel" class="kennel d-flex flex-column">
+            <h2>Kennel</h2>
+            <div id="kennel-cards" class="d-flex flex-wrap"></div>
+        </div>
+        <div id="hospital" class="hospital d-flex flex-column">
+            <h2>Hospital</h2>
+            <div id="hospital-cards" class="d-flex flex-wrap"></div>
+        </div>
+        <div id="graveyard" class="graveyard d-flex flex-column">
+            <h2>Graveyard</h2>
+            <div id="graveyard-cards" class="d-flex flex-wrap"></div>
+        </div>
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script
