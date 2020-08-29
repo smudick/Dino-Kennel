@@ -2,19 +2,20 @@ h1 {
   color: white;
 }
 
-h2 {
+h2,
+h5 {
   text-align: center;
 }
 
 .hospital {
-  background-color: red;
+  background-image: url("./images/hospital-bg.jpg");
 }
 
 .kennel {
-  background-color: green;
+  background-image: url("./images/kennel-bg.jpg");
 }
 .graveyard {
-  background-color: gray;
+  background-image: url("./images/graveyard-bg.jpg");
 }
 .card-size {
   height: 225px;
@@ -32,11 +33,11 @@ h2 {
   width: 30px;
 }
 .table {
-    display: flex;
-    justify-content: space-between;
-    justify-self: center;
+  display: flex;
+  justify-content: space-between;
+  justify-self: center;
 }
 .timestamp-summary {
-    display: flex;
-    align-self: center;
+  display: flex;
+  align-self: center;
 }
