@@ -299,18 +299,17 @@ const feedDinos = (e) => {
   const target = e.target.parentNode.parentNode.id;
   console.log(target);
   if (ctype === "button") {
-    // target.health += 10;
+    dinos[target].health += 10;
   }
   displayDinos();
 };
 
 const petDinos = (e) => {
   const ctype = e.target.type;
-  const target = e.target.id;
+  const target = e.target.parentNode.parentNode.id;
   console.log(target);
   if (ctype === "button") {
-    dinos.health += 5;
-    console.log(dinos.heath);
+    dinos[target].health += 5;
   }
   displayDinos();
 };
