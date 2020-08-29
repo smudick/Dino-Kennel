@@ -109,7 +109,9 @@ const displayDinos = () => {
             <img src="${item.image}" id="dino-image-${index}" class="card-img-top card-size" alt="${item.type}">
             <div class="card-body">
               <h5 class="card-title">${item.name}</h5>
-              <p class="card-text">Health: ${item.health}</p>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: ${item.health}%" aria-valuenow="${item.health}" aria-valuemin="0" aria-valuemax="100">${item.health}%</div>
+                </div>
               <button id="pet-button-${index}" type="button" class="btn btn-outline-primary m-1">Pet</button>
               <button id="feed-button-${index}" type="button" class="btn btn-outline-success m-1">Feed</button>
               <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning m-1">Adventure</button>
@@ -123,12 +125,14 @@ const displayDinos = () => {
                   <img src="${item.image}" id="dino-image-${index}" class="card-img-top card-size" alt="${item.type}">
                   <div class="card-body">
                     <h5 class="card-title">${item.name}</h5>
-                    <p class="card-text">Health: ${item.health}</p>
+                    <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: ${item.health}%" aria-valuenow="${item.health}" aria-valuemin="0" aria-valuemax="100">${item.health}%</div>
+                </div>
 
-                        <button id="pet-button-${index}" type="button" class="btn btn-outline-primary m-1">Pet</button>
-                        <button id="feed-button-${index}" type="button" class="btn btn-outline-success m-1">Feed</button>
-                        <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning m-1">Adventure</button>
-                        <button id="delete-button-${index}" type="button" class="btn btn-outline-danger m-1">Delete</button>
+                    <button id="pet-button-${index}" type="button" class="btn btn-outline-primary m-1">Pet</button>
+                    <button id="feed-button-${index}" type="button" class="btn btn-outline-success m-1">Feed</button>
+                    <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning m-1">Adventure</button>
+                    <button id="delete-button-${index}" type="button" class="btn btn-outline-danger m-1">Delete</button>
                   </div>
                 </div>`
       );
@@ -136,9 +140,9 @@ const displayDinos = () => {
       $("#graveyard-cards").append(
         `<div class="card m-2" id="${index}" style="width: 18rem;">
                   <img src="${item.image}" id="dino-image-${index}" class="card-img-top card-size" alt="${item.type}">
-                  <div class="card-body">
+                  <div class="card-body d-flex flex-column">
                     <h5 class="card-title">${item.name}</h5>
-                    <p class="card-text">Health: ${item.health}</p>
+                    <img class="dead-icon align-self-center" src="https://i.pinimg.com/originals/73/41/88/7341884ed3a6c8449ad968dbd7d038e5.jpg">
                     <button id="delete-button-${index}" type="button" class="btn btn-outline-danger m-1">Delete</button>
                   </div>
                 </div>`
@@ -150,9 +154,9 @@ const displayDinos = () => {
 };
 
 const healthChecker = (item) => {
-  if (item.health >= 60) {
+  if (item.health >= 50) {
     item.location = "kennel";
-  } else if (item.health < 60 && item.health > 0) {
+  } else if (item.health < 50 && item.health > 0) {
     item.location = "hospital";
   } else {
     item.location = "graveyard";
@@ -160,13 +164,11 @@ const healthChecker = (item) => {
 };
 
 const buttonClicks = (index) => {
-
   dinoModalPictureClick(index);
   deleteDinosButtonClick(index);
   petDinosButtonClick(index);
   feedDinosButtonClick(index);
-
-  // adventureButtonClick(index);
+  adventureButtonClick(index);
 };
 
 const addDinoButtonClick = () => {
@@ -183,6 +185,10 @@ const petDinosButtonClick = (index) => {
 
 const feedDinosButtonClick = (index) => {
   $(`#feed-button-${index}`).on("click", feedDinos);
+};
+
+const adventureButtonClick = (index) => {
+  $(`#adventure-button-${index}`).on("click", dinoAdventure);
 };
 
 const deleteDinosButtonClick = (index) => {
@@ -233,24 +239,23 @@ const addDinoModal = () => {
     </div>
   </div>
 </div>`);
-    submitDinoButtonClick();
+  submitDinoButtonClick();
   $("#add-dino-modal").modal("show");
-
 };
 
 const addNewDino = () => {
-    let newDino = {};
-    newDino.health = 60;
-    newDino.adventures = [];
-    newDino.name = $("#new-dino-name").val();
-    newDino.type = $("#new-dino-type").val();
-    newDino.age = $("#new-dino-age").val();
-    newDino.owner = $("#new-dino-owner").val();
-    newDino.image = $("#new-dino-image").val();
-  
-    dinos.push(newDino);
-    displayDinos(dinos);
-  };
+  let newDino = {};
+  newDino.health = 60;
+  newDino.adventures = [];
+  newDino.name = $("#new-dino-name").val();
+  newDino.type = $("#new-dino-type").val();
+  newDino.age = $("#new-dino-age").val();
+  newDino.owner = $("#new-dino-owner").val();
+  newDino.image = $("#new-dino-image").val();
+
+  dinos.push(newDino);
+  displayDinos(dinos);
+};
 
 const buildModal = (e) => {
   const target = e.target.parentNode.id;
@@ -261,7 +266,7 @@ const buildModal = (e) => {
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Dino Profile</h5>
+            <h4 class="modal-title">Dino Profile</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -275,20 +280,30 @@ const buildModal = (e) => {
                 <p>Type: ${item.type}</p>
                 <p>Age: ${item.age}</p>
                 <p>Owner: ${item.owner}</p>
+                <p>Health:</p>
+                <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: ${item.health}%" aria-valuenow="${item.health}" aria-valuemin="0" aria-valuemax="100">${item.health}%</div>
+                </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <div class="container-lg">Adventure Log</div>
+            <div class="table">
+            <div class="adventure-table-header text-center">
+                <h5>Adventure Table</h5>
+                <table>
+                    <tr class="timestamp-summary">
+                        <th>Timestamp</th>
+                        <th>Summary</th>
+                    </tr>
+                </table>
+            <div id="adventure-table" class="adventure-table text-center"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>`);
+      adventureTable(item);
     }
     $("#dino-info-modal").modal("show");
   });
 };
-
-
 
 const deleteDinos = (e) => {
   const ctype = e.target.type;
@@ -318,8 +333,54 @@ const petDinos = (e) => {
   displayDinos();
 };
 
+const dinoAdventure = (e) => {
+  const ctype = e.target.type;
+  const target = e.target.parentNode.parentNode.id;
+  let summary;
+  let adventureLog = {};
+  let timestamp = Date();
+  if (ctype === "button") {
+    let adventureRisk = Math.floor(Math.random() * 10);
+    if (adventureRisk > 6) {
+      dinos[target].health += 20;
+      summary = "A Fantastic Adventure!";
+    } else if (adventureRisk >= 4 && adventureRisk <= 6) {
+      dinos[target].health -= 1;
+      summary = "Meh";
+    } else if (adventureRisk < 4 && adventureRisk > 0) {
+      dinos[target].health -= 20;
+      summary = "A Challenging Adventure, The Dino has Sustained an Injury";
+    } else {
+      dinos[target].health = 0;
+      summary = `There's Been An Accident! The Dino has not Survived`;
+    }
+  }
+  adventureLog.timestamp = timestamp;
+  adventureLog.summary = summary;
+  dinos[target].adventures.push(adventureLog);
+  //   console.log(dinos[target]);
+  displayDinos();
+};
+
+const adventureTable = (dino) => {
+  let adventuresArray = dino.adventures;
+  console.log(adventuresArray);
+  adventuresArray.forEach((adventure) => {
+    console.log(adventure);
+    $("#adventure-table").append(`
+    <table>    
+        <tr>
+            <td>${adventure.timestamp}</td>
+            <td>${adventure.summary}</td>
+            
+        </tr>
+    </table>
+        `);
+  });
+};
+
 const init = () => {
   displayDinos(dinos);
-  addDinoButtonClick()
+  addDinoButtonClick();
 };
 init();

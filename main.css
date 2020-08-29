@@ -27,3 +27,16 @@ h2 {
   width: 250px;
   margin-right: 20px;
 }
+.dead-icon {
+  height: 30px;
+  width: 30px;
+}
+.table {
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+}
+.timestamp-summary {
+    display: flex;
+    align-self: center;
+}
