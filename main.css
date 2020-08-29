@@ -31,3 +31,12 @@ h2 {
   height: 30px;
   width: 30px;
 }
+.table {
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+}
+.timestamp-summary {
+    display: flex;
+    align-self: center;
+}

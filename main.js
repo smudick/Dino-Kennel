@@ -284,22 +284,22 @@ const buildModal = (e) => {
                 <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: ${item.health}%" aria-valuenow="${item.health}" aria-valuemin="0" aria-valuemax="100">${item.health}%</div>
                 </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <div class="container-lg">
-                <h5>Adventure Log</h5>
-                <table id="adventure-table"> 
-                    <tr>
+            <div class="table">
+            <div class="adventure-table-header text-center">
+                <h5>Adventure Table</h5>
+                <table>
+                    <tr class="timestamp-summary">
                         <th>Timestamp</th>
                         <th>Summary</th>
                     </tr>
                 </table>
+            <div id="adventure-table" class="adventure-table text-center"></div>
             </div>
           </div>
         </div>
       </div>
     </div>`);
-    //   adventureTable(item);
+      adventureTable(item);
     }
     $("#dino-info-modal").modal("show");
   });
@@ -363,15 +363,19 @@ const dinoAdventure = (e) => {
 };
 
 const adventureTable = (dino) => {
-  dino.adventures.forEach((adventure, index) => {
+  let adventuresArray = dino.adventures;
+  console.log(adventuresArray);
+  adventuresArray.forEach((adventure) => {
+    console.log(adventure);
     $("#adventure-table").append(`
+    <table>    
         <tr>
-            <td>${adventure[index].summary}</td>
-            <td>${adventure[index].timestamp}</td>
+            <td>${adventure.timestamp}</td>
+            <td>${adventure.summary}</td>
             
         </tr>
+    </table>
         `);
-    console.log(adventure, index);
   });
 };
 
