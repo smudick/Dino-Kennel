@@ -148,9 +148,6 @@ const displayDinos = () => {
                   <div class="card-body">
                     <h5 class="card-title">${item.name}</h5>
                     <p class="card-text">Health: ${item.health}</p>
-                    <button id="pet-button-${index}" type="button" class="btn btn-outline-primary m-1">Pet</button>
-                    <button id="feed-button-${index}" type="button" class="btn btn-outline-success m-1">Feed</button>
-                    <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning m-1">Adventure</button>
                     <button id="delete-button-${index}" type="button" class="btn btn-outline-danger m-1">Delete</button>
                   </div>
                 </div>`
