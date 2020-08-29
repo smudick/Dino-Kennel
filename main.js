@@ -3,7 +3,6 @@
 // import { getDinos } from "../data/dinoData.js";
 const dinos = [
   {
-    id: "dino1",
     name: "Dino Doug",
     type: "Apatosaurus",
     age: 45,
@@ -14,7 +13,6 @@ const dinos = [
     location: "kennel",
   },
   {
-    id: "dino2",
     name: "Clever Girl",
     type: "Velociraptor",
     age: 33,
@@ -25,7 +23,6 @@ const dinos = [
     location: "kennel",
   },
   {
-    id: "dino3",
     name: "Rex",
     type: "T-Rex",
     age: 78,
@@ -36,7 +33,6 @@ const dinos = [
     location: "kennel",
   },
   {
-    id: "dino4",
     name: "Bernard",
     type: "Unknown",
     age: 900,
@@ -47,7 +43,6 @@ const dinos = [
     location: "kennel",
   },
   {
-    id: "dino5",
     name: "Pepper",
     type: "Dogasaurus",
     age: 2,
@@ -58,7 +53,6 @@ const dinos = [
     location: "kennel",
   },
   {
-    id: "dino6",
     name: "Tim",
     type: "Talarurus",
     age: 100,
@@ -70,7 +64,6 @@ const dinos = [
     location: "kennel",
   },
   {
-    id: "dino7",
     name: "Tracy",
     type: "Triceratops",
     age: 100,
@@ -82,7 +75,6 @@ const dinos = [
     location: "kennel",
   },
   {
-    id: "dino8",
     name: "Percy",
     type: "Pterodactyl",
     age: 10,
@@ -93,7 +85,6 @@ const dinos = [
     location: "kennel",
   },
   {
-    id: "dino9",
     name: "Betty",
     type: "brontosaurus",
     age: 22,
@@ -148,14 +139,12 @@ const displayDinos = () => {
                   <div class="card-body">
                     <h5 class="card-title">${item.name}</h5>
                     <p class="card-text">Health: ${item.health}</p>
-                    <button id="pet-button-${index}" type="button" class="btn btn-outline-primary m-1">Pet</button>
-                    <button id="feed-button-${index}" type="button" class="btn btn-outline-success m-1">Feed</button>
-                    <button id="adventure-button-${index}" type="button" class="btn btn-outline-warning m-1">Adventure</button>
                     <button id="delete-button-${index}" type="button" class="btn btn-outline-danger m-1">Delete</button>
                   </div>
                 </div>`
       );
     }
+    item.id = index;
     buttonClicks(index);
   });
 };
@@ -171,7 +160,7 @@ const healthChecker = (item) => {
 };
 
 const buttonClicks = (index) => {
-  addDinoButtonClick();
+
   dinoModalPictureClick(index);
   deleteDinosButtonClick(index);
   petDinosButtonClick(index);
@@ -200,55 +189,73 @@ const deleteDinosButtonClick = (index) => {
   $(`#delete-button-${index}`).on("click", deleteDinos);
 };
 
+const submitDinoButtonClick = () => {
+  $("#submit-new-dino").on("click", addNewDino);
+};
+
 const addDinoModal = () => {
-  $("#add-dino").html(`
+  $("#add-dino").append(`
     <div class="modal" id="add-dino-modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add a Dino</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-            <div class="form-group">
-                <label for="formGroupExampleInput">Namel</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Name">
-            </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput">Age</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Age">
-            </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput">Type</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Type">
-            </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput">Owner</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Owner">
-            </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput">Image</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Image Url">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add a Dino</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body">
+                <form>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Name</label>
+                    <input type="text" class="form-control" id="new-dino-name" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Age</label>
+                    <input type="text" class="form-control" id="new-dino-age" placeholder="Enter Age">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Type</label>
+                    <input type="text" class="form-control" id="new-dino-type" placeholder="Enter Type">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Owner</label>
+                    <input type="text" class="form-control" id="new-dino-owner" placeholder="Enter Owner">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Image</label>
+                    <input type="text" class="form-control" id="new-dino-image" placeholder="Enter Image Url">
+                </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit</button>
-      </div>
+        <div class="modal-footer">
+            <button type="button" id="submit-new-dino" class="btn btn-primary">Submit</button>
+        </div>
     </div>
   </div>
 </div>`);
+    submitDinoButtonClick();
   $("#add-dino-modal").modal("show");
+
 };
 
+const addNewDino = () => {
+    let newDino = {};
+    newDino.health = 60;
+    newDino.adventures = [];
+    newDino.name = $("#new-dino-name").val();
+    newDino.type = $("#new-dino-type").val();
+    newDino.age = $("#new-dino-age").val();
+    newDino.owner = $("#new-dino-owner").val();
+    newDino.image = $("#new-dino-image").val();
+  
+    dinos.push(newDino);
+    displayDinos(dinos);
+  };
+
 const buildModal = (e) => {
-  let pictureId = e.target.parentNode.id;
-  console.log(pictureId);
+  const target = e.target.parentNode.id;
   dinos.forEach((item) => {
-    console.log(`dino-${item.id}`);
-    if (pictureId === `dino-${item.id}`) {
+    if (`${target}` === `${item.id}`) {
       $("#dino-info").html(`
       <div class="modal" id="dino-info-modal" tabindex="-1">
       <div class="modal-dialog">
@@ -271,7 +278,7 @@ const buildModal = (e) => {
             </div>
           </div>
           <div class="modal-footer">
-            <div class="container-lg">100% wide until large breakpoint</div>
+            <div class="container-lg">Adventure Log</div>
           </div>
         </div>
       </div>
@@ -281,12 +288,11 @@ const buildModal = (e) => {
   });
 };
 
+
+
 const deleteDinos = (e) => {
   const ctype = e.target.type;
   const target = e.target.parentNode.parentNode.id;
-  const target2 = e.currentTarget.parentNode.parentNode.id;
-
-  console.log(target, target2);
 
   if (ctype === "button") {
     dinos.splice(target, 1);
@@ -297,7 +303,6 @@ const deleteDinos = (e) => {
 const feedDinos = (e) => {
   const ctype = e.target.type;
   const target = e.target.parentNode.parentNode.id;
-  console.log(target);
   if (ctype === "button") {
     dinos[target].health += 10;
   }
@@ -307,7 +312,6 @@ const feedDinos = (e) => {
 const petDinos = (e) => {
   const ctype = e.target.type;
   const target = e.target.parentNode.parentNode.id;
-  console.log(target);
   if (ctype === "button") {
     dinos[target].health += 5;
   }
@@ -316,5 +320,6 @@ const petDinos = (e) => {
 
 const init = () => {
   displayDinos(dinos);
+  addDinoButtonClick()
 };
 init();
