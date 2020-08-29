@@ -7,5 +7,7 @@ This project allows users to interact with Dinosaurs in a virtual dino kennel. H
 ![Screen Shot 2020-08-29 at 1 37 57 PM](https://user-images.githubusercontent.com/65687019/91643904-e585c100-e9fc-11ea-98f5-c7223847c2f6.png)
 
 
+![Screen Recording 2020-08-29 at 2 01 19 PM](https://user-images.githubusercontent.com/65687019/91644351-db65c180-ea00-11ea-9cea-58536c2e6fac.gif)
+
 https://sm-dino-kennel.netlify.app/
 [![Netlify Status](https://api.netlify.com/api/v1/badges/89879592-a1a3-4a96-b1e2-e98566ac9ca6/deploy-status)](https://app.netlify.com/sites/sm-dino-kennel/deploys)
