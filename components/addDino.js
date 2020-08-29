@@ -20,7 +20,7 @@ const addDinoButtonClick = () => {
                           <span aria-hidden="true">&times;</span>
                       </button>
                   </div>
-              <div class="modal-body">
+              <div class="modal-body d-flex flex-column">
                   <form>
                   <div class="form-group">
                       <label for="formGroupExampleInput">Name</label>

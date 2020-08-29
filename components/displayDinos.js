@@ -61,8 +61,10 @@ const displayDinos = () => {
 const healthChecker = (item) => {
   if (item.health >= 50) {
     item.location = "kennel";
+    item.healthbarColor = "bg-success"
   } else if (item.health < 50 && item.health > 0) {
     item.location = "hospital";
+    item.healthbarColor = "bg-danger"
   } else {
     item.location = "graveyard";
   }
