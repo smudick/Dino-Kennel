@@ -255,7 +255,16 @@ const addNewDino = () => {
 
   dinos.push(newDino);
   displayDinos(dinos);
+  clearDinoForm();
 };
+
+const clearDinoForm = () => {
+    $("#new-dino-name").val("")
+    $("#new-dino-type").val("")
+    $("#new-dino-age").val("")
+    $("#new-dino-owner").val("")
+    $("#new-dino-image").val("")
+}
 
 const buildModal = (e) => {
   const target = e.target.parentNode.id;
