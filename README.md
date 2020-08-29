@@ -1,35 +1,13 @@
-Dino Kennel
-NOTE: You cannot start coding until your project board and tickets have been approved by an instructor
-Description
-This project showcases all the vanilla javascript we learned in the foundations milestones. It is designed to be a record keeping application for a dinosaur kennel.
+# Dino-Kennel
 
-Feature List
-Healthy dinos show in the kennel
-Sick dinos show in the hospital
-Dead dinos show in the graveyard
-Dinos can be removed from the kennel
-Dinos can be added to the kennel
-Dinos can be fed
-Dinos can be petted
-Dinos can be sent on an adventure
-Technical Requirements
-You must use Boostrap to style your page components.
-Your JS file should be comprised of functions, no actions should happen in your code outside of a function
-Your HTML and JS should all have proper indentations
-You should be using ES6 modules
-Your JS code should be formatted correctly!
-Screenshots
-Full Page view
-Main View
 
-Single Dino Modal
-Single Dino Modal
+## Project Overview
+This project allows users to interact with Dinosaurs in a virtual dino kennel. Here you can learn more about each dino, feed and pet dinos, and send them on adventures. Be wary of the dinos health though, if their health drops too low they may end up in the hospital or even the graveyard. 
 
-Add New Dino
-Add a Dino
+![Screen Shot 2020-08-29 at 1 37 57 PM](https://user-images.githubusercontent.com/65687019/91643904-e585c100-e9fc-11ea-98f5-c7223847c2f6.png)
 
-How to Run
-Clone down this repo
-Make sure you have http-server installed via npm. If not get it HERE.
-On your command line run hs -p 9999
-In your browser go to http://localhost:9999
+
+![Screen Recording 2020-08-29 at 2 01 19 PM](https://user-images.githubusercontent.com/65687019/91644351-db65c180-ea00-11ea-9cea-58536c2e6fac.gif)
+
+https://sm-dino-kennel.netlify.app/
+[![Netlify Status](https://api.netlify.com/api/v1/badges/89879592-a1a3-4a96-b1e2-e98566ac9ca6/deploy-status)](https://app.netlify.com/sites/sm-dino-kennel/deploys)
