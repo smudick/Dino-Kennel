@@ -6,7 +6,7 @@ const dinos = [
     age: 45,
     owner: "John Hammond",
     adventures: [],
-    health: 30,
+    health: 60,
     image: "./images/apatosaurus.jpg",
   },
   {
@@ -16,13 +16,13 @@ const dinos = [
     age: 33,
     owner: "Dr. Alan Grant",
     adventures: [],
-    health: 40,
+    health: 60,
     image: "./images/velociraptor.jpg",
   },
   {
     id: "dino3",
     name: "Rex",
-    type: "Velociraptor",
+    type: "T-Rex",
     age: 78,
     owner: "Dr. Ellie Satler",
     adventures: [],
@@ -88,7 +88,7 @@ const dinos = [
     age: 22,
     owner: "Dr. T",
     adventures: [],
-    health: 60,
+    health: 20,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTOdrC7hlvBawFQ7g8vgwHcfQphX5WfeN2bth0dvc4M2oxNGdSD",
   },
